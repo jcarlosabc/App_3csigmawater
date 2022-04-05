@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Ansonika">
+	<title>Registro de vendedor</title>
+
+	<!-- Favicons-->
+	<link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
+	<link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="/img/apple-touch-icon-72x72-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
+		href="/img/apple-touch-icon-114x114-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
+		href="/img/apple-touch-icon-144x144-precomposed.png">
+	<link rel="stylesheet" href="/css/scrolls.css">
+
+	<link rel="stylesheet" href="/css/upload.css">
+	<!-- GOOGLE WEB FONT -->
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"
+		rel="stylesheet">
+
+	<!-- BASE CSS -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/style.css" rel="stylesheet">
+	<link href="/css/responsive.css" rel="stylesheet">
+	<link href="/css/menu.css" rel="stylesheet">
+	<link href="/css/animate.min.css" rel="stylesheet">
+	<link href="/css/icon_fonts/css/all_icons_min.css" rel="stylesheet">
+	<link href="/css/skins/square/grey.css" rel="stylesheet">
+
+	<!-- YOUR CUSTOM CSS -->
+	<link href="/css/custom.css" rel="stylesheet">
+
+	<script src="/js/modernizr.js"></script>
+	<!-- Modernizr -->
+
+</head>
+
+<body>
+	<h3>HOLA DESDE EL LOGIN </h3>
+
+
+
+
+
+
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
+	<script src="/js/sweetalert.js"></script>
+
+	<% if (msgExito) { %>
+	<script>
+		Swal.fire({
+			icon: 'success',
+			title: 'Tu registro ha sido recibido Muchas gracias!',
+			html: 'Tu información será verificada por un administrador y recibirás un correo cuando tu cuenta sea activada.',
+			grow: 'fullscreen',
+			padding: '129px 43px 80px',
+			backdrop: 'white',
+
+			timer: 6000,
+			// timerProgressBar: true,
+			didOpen: () => {
+				Swal.showLoading()
+				const b = Swal.getHtmlContainer().querySelector('b')
+				timerInterval = setInterval(() => {
+					b.textContent = Swal.getTimerLeft()
+				}, 100)
+			},
+			willClose: () => {
+				clearInterval(timerInterval)
+			}
+		}).then((result) => {
+			/* Read more about handling dismissals below */
+			if (result.dismiss === Swal.DismissReason.timer) {
+				console.log('I was closed by the timer')
+			}
+		})
+	</script>
+	<% } %>
+
+
+</body>
+
+</html>
