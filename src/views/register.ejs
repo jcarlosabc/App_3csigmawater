@@ -285,14 +285,14 @@
 											<div class="input-group">
 												<label class="input-group-btn">
 													<span class="btn btn-primary" style="padding: 10px;">
-														Cargar licencia<input type="file" name="licencia" id="licencia"  class="required" style="display: none;" class="inputfile" multiple>
+														Cargar licencia<input type="file" name="licencia" placeholder=" Solo archivos .jpg o .png son aceptados"  id="licencia"  class="required" style="display: none;" class="inputfile" multiple>
 													</span>
 												</label>
 												<input type="text" class="form-control" placeholder=" Solo archivos .jpg o .png son aceptados"  readonly>
 											</div>
 
 
-
+											 <!-- placeholder=" Solo archivos .jpg o .png son aceptados"  -->
 
 
 										</div>
@@ -535,18 +535,18 @@
 	</script>
 
 
-	<!-- <script>
+	 <script>
 
 		$(function () {
 
-			// This code will attach `fileselect` event to all file inputs on the page
+		// This code will attach `fileselect` event to all file inputs on the page
 			$(document).on('change', ':file', function () {
 				var input = $(this),
 					numFiles = input.get(0).files ? input.get(0).files.length : 1,
 					label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
 				input.trigger('fileselect', [numFiles, label]);
 			});
-
+	
 
 			$(document).ready(function () {
 				//below code executes on file input change and append name in text control
@@ -566,7 +566,7 @@
 
 		});
 
-	</script> -->
+	</script> 
 
 
 </body>
