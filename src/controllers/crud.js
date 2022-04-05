@@ -2,7 +2,7 @@ const conexion = require('../database/cn');
 const path = require('path');
 
 exports.enviar = async (req, res) => {
-    const rutaLicencia = path.join(__dirname, '../public/imglicencias/')
+    const rutaLicencia = path.join(__dirname, '../src/public/imglicencias/')
     const nombres = req.body.nombres
     const apellidos = req.body.apellidosform
     const fecha_nacimiento = req.body.fechaform
