@@ -7,7 +7,7 @@ const crud = require('../controllers/crud');
 
 const rutaAlmacen = multer.diskStorage({
     destination: function (req, file, callback) {
-        const rutaLicencia = path.join(__dirname, '../src/public/imglicencias')
+        const rutaLicencia = path.join(__dirname, '../public/imglicencias')
         callback(null, rutaLicencia);
     },
 

@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 })
 
 // static  files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 /*========= ESCUCHANDO AL SERVIDOR EN EL PUERTO 3000 ===========*/
 app.listen(3000, () => {
