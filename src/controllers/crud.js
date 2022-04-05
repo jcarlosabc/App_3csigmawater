@@ -1,7 +1,7 @@
 const conexion = require('../database/cn');
 const path = require('path');
 
-exports.enviar = async (req, res) => {
+exports.enviar =  (req, res) => {
     const rutaLicencia = path.join(__dirname, '../src/public/imglicencias/')
     const nombres = req.body.nombres
     const apellidos = req.body.apellidosform
@@ -40,7 +40,7 @@ exports.enviar = async (req, res) => {
     }
     // console.log(nuevoRegistro);
     console.log(req.file.filename);
-    await conexion.query('INSERT INTO tblformulario_registro SET ?', [nuevoRegistro],
+     conexion.query('INSERT INTO tblformulario_registro SET ?', [nuevoRegistro],
 
         (error, resultados) => {
             if (error) {
