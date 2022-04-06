@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="author" content="Ansonika">
-	<title>Inicio de sesion</title>
+	<title>Registro de vendedor</title>
 
 	<!-- Favicons-->
 	<link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon">
@@ -41,7 +41,7 @@
 </head>
 
 <body>
-	<h3>HOLA DESDE EL LOGIN </h3>
+	
 
 
 
@@ -53,9 +53,12 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js"></script>
 	<script src="/js/sweetalert.js"></script>
-
-	<% if (msgExito) { %>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	
 	<script>
+
+
+
 		Swal.fire({
 			icon: 'success',
 			title: 'Tu registro ha sido recibido Muchas gracias!',
@@ -63,16 +66,19 @@
 			grow: 'fullscreen',
 			padding: '129px 43px 80px',
 			backdrop: 'white',
+		    focusConfirm: false,
+			confirmButtonText: '<a href="https://3csigmawater.com/" style="color:white" >Aceptar</a> ',
+	
 
-			timer: 6000,
+			// timer: 6000,
 			// timerProgressBar: true,
-			didOpen: () => {
-				Swal.showLoading()
-				const b = Swal.getHtmlContainer().querySelector('b')
-				timerInterval = setInterval(() => {
-					b.textContent = Swal.getTimerLeft()
-				}, 100)
-			},
+			// didOpen: () => {
+			// 	Swal.showLoading()
+			// 	const b = Swal.getHtmlContainer().querySelector('b')
+			// 	timerInterval = setInterval(() => {
+			// 		b.textContent = Swal.getTimerLeft()
+			// 	}, 100)
+			// },
 			willClose: () => {
 				clearInterval(timerInterval)
 			}
@@ -83,9 +89,8 @@
 			}
 		})
 	</script>
-	<% } %>
-
 
 </body>
 
 </html>
+

@@ -1,85 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="author" content="Ansonika">
-	<title>Registro de vendedor</title>
+<%- include ('./partials/header.ejs') %> 
 
-	<!-- Favicons-->
-	<link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
-	<link rel="stylesheet" href="./css/scrolls.css">
-
-	<link rel="stylesheet" href="./css/upload.css">
-	<!-- GOOGLE WEB FONT -->
-	<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap"
-		rel="stylesheet">
-
-	<!-- BASE CSS -->
-	<link href="./css/bootstrap.min.css" rel="stylesheet">
-	<link href="./css/style.css" rel="stylesheet">
-	<link href="./css/responsive.css" rel="stylesheet">
-	<link href="./css/menu.css" rel="stylesheet">
-	<link href="./css/animate.min.css" rel="stylesheet">
-	<link href="./css/icon_fonts/css/all_icons_min.css" rel="stylesheet">
-	<link href="./css/skins/square/grey.css" rel="stylesheet">
-
-	<!-- YOUR CUSTOM CSS -->
-	<link href="./css/custom.css" rel="stylesheet">
-
-	<script src="./js/modernizr.js"></script>
-	<!-- Modernizr -->
-
-</head>
-
-<body>
-	<div id="preloader">
-		<div data-loader="circle-side"></div>
-	</div><!-- /Preload -->
-
-	<div id="loader_form">
-		<div data-loader="circle-side-2"></div>
-	</div><!-- /loader_form -->
-
-	<header>
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-3">
-					<div id="logo_home">
-						<h1><a href="#"></a>
-						</h1>
-					</div>
-				</div>
-				<div class="col-9">
-					<div id="social">
-						<ul>
-							<li><a href="https://www.facebook.com/3csigmawater" target="_blank"><i
-										class="icon-facebook"></i></a></li>
-							<!-- <li><a href="#0"><i class="icon-twitter"></i></a></li> -->
-							<li><a href="https://instagram.com/3csigmawater" target="_blank"><i
-										class="icon-instagram"></i></a></li>
-							<!-- <li><a href="#0"><i class="icon-linkedin"></i></a></li> -->
-						</ul>
-					</div>
-					<!-- /social -->
-					<!-- <nav>
-                        <ul class="cd-primary-nav">
-                            <li><a href="index.html" class="animated_link">Register Version</a></li>
-                            <li><a href="reservation_version.html" class="animated_link">Reservation Version</a></li>
-                            <li><a href="questionare_version.html" class="animated_link">Questionare Version</a></li>
-                            <li><a href="review_version.html" class="animated_link">Review Version</a></li>
-                            <li><a href="about.html" class="animated_link">About Us</a></li>
-                            <li><a href="contacts.html" class="animated_link">Contact Us</a></li>
-                        </ul>
-                    </nav> -->
-				</div>
-			</div>
-		</div>
-		<!-- container -->
-	</header>
-	<!-- End Header -->
 
 	<main>
 		<div id="form_container">
@@ -167,7 +88,7 @@
 
 										<div class="col-md-4">
 											<div class="form-group">
-												<input type="text"  name="direccion" id="direccion" class="form-control required"
+												<input type="text"  name="direccion" id="direccion"  pattern="[a-zA-Z]+"   class="form-control required"
 													placeholder="Direccion*">
 											</div>
 										</div>
@@ -196,8 +117,8 @@
 
 										<div class="col-md-4">
 											<div class="form-group">
-												<input type="text" name="referido" id="referido" 
-													class="form-control " maxlength="6" placeholder="Codigo de referido">
+												<input   type="number" name="referido"  id="referido" 
+													class="form-control " pattern="[0-9]+" placeholder="Codigo de referido" maxlength="6">
 											</div>
 										</div>
 									
@@ -285,7 +206,8 @@
 											<div class="input-group">
 												<label class="input-group-btn">
 													<span class="btn btn-primary" style="padding: 10px;">
-														Cargar licencia<input type="file" name="licencia" placeholder=" Solo archivos .jpg o .png son aceptados"  id="licencia"  class="required" style="display: none;" class="inputfile" multiple>
+														Cargar licencia<input type="file" name="licencia" style="display: none;" id="licencia"   class="required" > 
+														<!-- style="display: none;" class="inputfile" multiple -->
 													</span>
 												</label>
 												<input type="text" class="form-control" placeholder=" Solo archivos .jpg o .png son aceptados"  readonly>
@@ -516,59 +438,4 @@
 	<!-- /.modal-dialog -->
 	<!-- </div> -->
 	<!-- /.modal -->
-
-	<!-- SCRIPTS -->
-	<!-- Jquery-->
-	<script src="./js/jquery-3.6.0.min.js"></script>
-	<!-- Common script -->
-	<script src="./js/common_scripts_min.js"></script>
-	<!-- Wizard script -->
-	<script src="./js/registration_wizard_func.js"></script>
-	<!-- Menu script -->
-	<script src="./js/velocity.min.js"></script>
-	<script src="./js/main.js"></script>
-	<!-- Theme script -->
-	<script src="./js/functions.js"></script>
-	<script src="./js/upload.js"></script>
-
-
-	</script>
-
-
-	 <script>
-
-		$(function () {
-
-		// This code will attach `fileselect` event to all file inputs on the page
-			$(document).on('change', ':file', function () {
-				var input = $(this),
-					numFiles = input.get(0).files ? input.get(0).files.length : 1,
-					label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-				input.trigger('fileselect', [numFiles, label]);
-			});
-	
-
-			$(document).ready(function () {
-				//below code executes on file input change and append name in text control
-				$(':file').on('fileselect', function (event, numFiles, label) {
-
-					var input = $(this).parents('.input-group').find(':text'),
-						log = numFiles > 1 ? numFiles + ' files selected' : label;
-
-					if (input.length) {
-						input.val(log);
-					} else {
-						if (log) alert(log);
-					}
-
-				});
-			});
-
-		});
-
-	</script> 
-
-
-</body>
-
-</html>
+	<%- include ('./partials/footer.ejs') %> 

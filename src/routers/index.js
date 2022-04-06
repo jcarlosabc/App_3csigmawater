@@ -11,15 +11,36 @@ const rutaAlmacen = multer.diskStorage({
         callback(null, rutaLicencia);
     },
 
+
     filename: function (req, file, callback) {
         console.log('file');
         callback(null, "sigmaWater_" + file.originalname);
     }
+
 });
 
 const cargar = multer({
-    storage: rutaAlmacen
+    storage: rutaAlmacen,
+    
+ limits:{fileSize:1000000},
+
+ fileFilter:(req, file, callback) =>{
+
+    const filetypes = /jpg|png|/;
+    const mimetype = filetypes.test(file.mimetype);
+    const extname = filetypes.test(path.extname(file.originalname));
+
+        if(mimetype && extname){
+            return callback(null, true);
+        }else{
+
+            callback("Error: archivo debe ser una imagen en formato JPG - PNG");
+        }
+       
+  }
 });
+
+router.post('/enviar', cargar.single('licencia'), crud.enviar);
 
 
 // Redireccionar al Login - Ruta principal, local=> localhost:3000 || server=> app.3csigmawater.com
@@ -29,8 +50,8 @@ router.get('/', (req, res) => {
 });
 
 
-router.get('/login', (req, res) => {
-    res.render('login', {
+router.get('/mensaje', (req, res) => {
+    res.render('mensaje', {
         msgExito: false
     })
 });
@@ -55,6 +76,6 @@ router.get('/register', (req, res) => {
     res.render('register');
 })
 
-router.post('/enviar', cargar.single('licencia'), crud.enviar);
+
 
 module.exports = router;

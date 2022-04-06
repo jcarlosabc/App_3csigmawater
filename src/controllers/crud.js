@@ -1,7 +1,7 @@
 const conexion = require('../database/cn');
 const path = require('path');
 
-exports.enviar =  (req, res) => {
+exports.enviar = async (req, res) => {
     const rutaLicencia = path.join(__dirname, '../src/public/imglicencias/')
     const nombres = req.body.nombres
     const apellidos = req.body.apellidosform
@@ -38,9 +38,11 @@ exports.enviar =  (req, res) => {
         nombre_beneficiario,
         licencia_conduccion
     }
+
+   
     // console.log(nuevoRegistro);
-    console.log(req.file.filename);
-     conexion.query('INSERT INTO tblformulario_registro SET ?', [nuevoRegistro],
+    console.log(req.file);
+    await conexion.query('INSERT INTO tblformulario_registro SET ?', [nuevoRegistro],
 
         (error, resultados) => {
             if (error) {
@@ -48,7 +50,7 @@ exports.enviar =  (req, res) => {
                 console.log(error);
             } else {
                 // req.flash = ("success", "Tu registro ha sido recibido Muchas gracias!");
-                res.redirect('/login');
+                res.redirect('/mensaje');
             }
         }
     );
