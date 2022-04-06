@@ -5,23 +5,25 @@ const multer = require('multer');
 const path = require('path');
 const crud = require('../controllers/crud');
 
+
+
+
+
 const rutaAlmacen = multer.diskStorage({
     destination: function (req, file, callback) {
         const rutaLicencia = path.join(__dirname, '../public/imglicencias')
         callback(null, rutaLicencia);
     },
-
-
+      
     filename: function (req, file, callback) {
         console.log('file');
-        callback(null, "sigmaWater_" + file.originalname);
+        callback(null, req.body.nombres+"_" + req.body.apellidosform +"_licencia anversa_sigmaWater_" + file.originalname );
     }
 
 });
 
 const cargar = multer({
     storage: rutaAlmacen,
-    
  limits:{fileSize:1000000},
 
  fileFilter:(req, file, callback) =>{
@@ -34,13 +36,23 @@ const cargar = multer({
             return callback(null, true);
         }else{
 
-            callback("Error: archivo debe ser una imagen en formato JPG - PNG");
+callback('Error: esto no es una imagen');
         }
        
   }
+
+
 });
 
+
+
+
+/*=============================================================*/
 router.post('/enviar', cargar.single('licencia'), crud.enviar);
+
+/*=============================================================*/
+
+
 
 
 // Redireccionar al Login - Ruta principal, local=> localhost:3000 || server=> app.3csigmawater.com

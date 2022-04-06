@@ -3,6 +3,7 @@ const path = require('path');
 
 exports.enviar = async (req, res) => {
     const rutaLicencia = path.join(__dirname, '../src/public/imglicencias/')
+  
     const nombres = req.body.nombres
     const apellidos = req.body.apellidosform
     const fecha_nacimiento = req.body.fechaform
@@ -18,7 +19,9 @@ exports.enviar = async (req, res) => {
     const numero_de_cuenta = req.body.cuenta
     const numero_de_ruta = req.body.ruta
     const nombre_beneficiario = req.body.beneficiario
+    
     const licencia_conduccion = rutaLicencia + 'sigmaWater_' + req.body.licencia
+
 
     const nuevoRegistro = {
         nombres,
@@ -36,7 +39,8 @@ exports.enviar = async (req, res) => {
         numero_de_cuenta,
         numero_de_ruta,
         nombre_beneficiario,
-        licencia_conduccion
+        licencia_conduccion,
+      
     }
 
    
