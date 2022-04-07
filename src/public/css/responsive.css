@@ -25,9 +25,6 @@
 
 }
 
-
-
-
 @media (max-width: 1200px) {
   .terms {
     margin: -17px;
@@ -472,12 +469,12 @@ width:11%;
   }
   #logo_home h1 a {
     width: -11%;
-    height: 55px;
+    height: 54px;
     display: block;
-    background-image: url(../img/logom.png);
+    background-image: url(../img/logo.svg);
     background-repeat: no-repeat;
     background-position: left top;
-	background-size: 209px 61px;
+	background-size: 174px 51px;
     text-indent: -10023px;
   }
 }

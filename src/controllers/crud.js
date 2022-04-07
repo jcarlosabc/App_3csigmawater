@@ -10,7 +10,7 @@ exports.enviar = async (req, res) => {
     const numero_telefono = req.body.telefonoform
     const correo = req.body.correo
     const seguro_social = req.body.seguro
-    const ciudad_donde_vive = req.body.ciudad
+     const ciudad_donde_vive = req.body.ciudad
     const direccion = req.body.direccion
     const apt_suite_unidad = req.body.direccion2
     const codigo_postal = req.body.postal
@@ -43,8 +43,8 @@ exports.enviar = async (req, res) => {
       
     }
 
-   
-    // console.log(nuevoRegistro);
+   console.log(seguro_social);
+//    console.log(nuevoRegistro);
     console.log(req.file);
     await conexion.query('INSERT INTO tblformulario_registro SET ?', [nuevoRegistro],
 

@@ -68,10 +68,12 @@
 										</div>
 
 										<div class="col-md-4">
-											<div class="form-group">
-												<input type="number" name="seguro" id="seguro" class="form-control required"
-													placeholder="# de Seguro Social o ITIN*">
-											</div>
+
+									
+										 <div class="form-group">
+									
+								 <input type="tel" name="seguro" id="seguro" placeholder="# de seguro social o ITIN " class="form-control required social"  required />  
+											</div> 
 										</div>
 
 									</div>
@@ -166,9 +168,10 @@
 										<div class="col-md-5">
 											<div class="form-group">
 												<input type="number" name="ruta" id="ruta"  class="form-control required"
-												maxlength="9"	placeholder="Numero de ruta*" >
+												maxlength="9" placeholder="Numero de ruta*" oninput="maxlengthNumber(this);" >
 											</div>
 										</div>
+										
 
 										<div class="col-md-6">
 											<div class="form-group">
@@ -200,20 +203,28 @@
 											</label>
 											<p class="titulolicencia">Licencia de conducir </p>
 
-
-
-											
 											<div class="input-group">
 												<label class="input-group-btn">
 													<span class="btn btn-primary" style="padding: 10px;">
-														Cargar anverso<input type="file" name="licencia" style="display: none;" id="licencia"   class="required" > 
+														Cargar anverso<input type="file" name="licencia"  id="campoFile"accept="image/jpg"   style="display: none;" id="licencia"   class="required" > 
 														<!-- style="display: none;" class="inputfile" multiple -->
 													</span>
 												</label>
 												<input type="text" class="form-control" style="font-size: 15px;	" placeholder=" Solo archivos .jpg o .png de max 4MB son permitidos"  readonly>
 											</div>
 
-											
+											<div class="input-group">
+												<label class="input-group-btn">
+													<span class="btn btn-primary" style="padding: 10px;">
+														Cargar reverso<input type="file" name="licencia_trasera"  id="campoFile" accept="image/jpg"   style="display: none;" id="licencia"   class="required" > 
+														<!-- style="display: none;" class="inputfile" multiple -->
+													</span>
+												</label>
+												<input type="text" class="form-control" style="font-size: 15px;	" placeholder=" Solo archivos .jpg o .png de max 4MB son permitidos"  readonly>
+											</div>
+
+
+
 											<!-- <div class="input-group">
 												<label class="input-group-btn">
 													<span class="btn btn-primary" style="padding: 10px;">

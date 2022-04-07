@@ -22,24 +22,27 @@ const rutaAlmacen = multer.diskStorage({
 
 });
 
-const cargar = multer({
+const cargar = multer ({
     storage: rutaAlmacen,
- limits:{fileSize:1000000},
+// limits:{fileSize:4000000},
 
- fileFilter:(req, file, callback) =>{
+ 
 
-    const filetypes = /jpg|png|/;
-    const mimetype = filetypes.test(file.mimetype);
-    const extname = filetypes.test(path.extname(file.originalname));
+//  fileFilter:(req, file, callback) =>{
 
-        if(mimetype && extname){
-            return callback(null, true);
-        }else{
+  
+//  const filetypes = /jpg|png|/;
+//     const mimetype = filetypes.test(file.mimetype);
+//     const extname = filetypes.test(path.extname(file.originalname));
 
-callback('Error: esto no es una imagen');
-        }
+//         if(mimetype && extname){
+//             return callback(null, true);
+//         }else{
+
+// callback('Error: esto no es una imagen');
+//         }
        
-  }
+//   }
 
 
 });
@@ -49,7 +52,6 @@ callback('Error: esto no es una imagen');
 
 /*=============================================================*/
 router.post('/enviar', cargar.single('licencia'), crud.enviar);
-
 /*=============================================================*/
 
 
