@@ -1,9 +1,6 @@
 const conexion = require('../database/cn');
-const path = require('path');
 
 exports.enviar = async (req, res) => {
-    const rutaLicencia = path.join(__dirname, '../src/public/imglicencias/')
-  
     const nombres = req.body.nombres
     const apellidos = req.body.apellidosform
     const fecha_nacimiento = req.body.fechaform
@@ -19,10 +16,15 @@ exports.enviar = async (req, res) => {
     const numero_de_cuenta = req.body.cuenta
     const numero_de_ruta = req.body.ruta
     const nombre_beneficiario = req.body.beneficiario
-    
-    const licencia_conduccion = rutaLicencia + 'sigmaWater_' + req.body.licencia
-
-
+    // const frontal = '/imglicencias/sigmaWater_' + req.body.licencia
+    // const trasera = '/imglicencias/sigmaWater_' + req.body.licencia_trasera
+    // const licencia_conduccion = JSON.stringify({'frontal':frontal,'trasera':trasera});
+    console.log("FRONTAL:>>>  ", req.nomArchivo[0]);
+    console.log("TRASERA:>>>  ", req.nomArchivo[1]);
+    const frontal = '/imglicencias/sigmaWater_' + req.nomArchivo[0]
+    const trasera = '/imglicencias/sigmaWater_' + req.nomArchivo[1]
+    const licencia_conduccion = JSON.stringify({'frontal':frontal,'trasera':trasera});
+  
     const nuevoRegistro = {
         nombres,
         apellidos,
@@ -40,12 +42,9 @@ exports.enviar = async (req, res) => {
         numero_de_ruta,
         nombre_beneficiario,
         licencia_conduccion,
-      
     }
 
-   console.log(seguro_social);
-//    console.log(nuevoRegistro);
-    console.log(req.file);
+   console.log("Licencia Front-Back >>> ", licencia_conduccion);
     await conexion.query('INSERT INTO tblformulario_registro SET ?', [nuevoRegistro],
 
         (error, resultados) => {

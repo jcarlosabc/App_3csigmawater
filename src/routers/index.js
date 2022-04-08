@@ -5,10 +5,9 @@ const multer = require('multer');
 const path = require('path');
 const crud = require('../controllers/crud');
 
-
-
-
-
+// licencia_trasera
+let myArray = [];
+ 
 const rutaAlmacen = multer.diskStorage({
     destination: function (req, file, callback) {
         const rutaLicencia = path.join(__dirname, '../public/imglicencias')
@@ -16,43 +15,29 @@ const rutaAlmacen = multer.diskStorage({
     },
       
     filename: function (req, file, callback) {
-        console.log('file');
-        callback(null, req.body.nombres+"_" + req.body.apellidosform +"_licencia anversa_sigmaWater_" + file.originalname );
+        console.log(myArray)
+        const nomFile = req.body.nombres+"_" + req.body.apellidosform +"_licencia_sigmaWater_" + file.originalname;
+        myArray.push(nomFile);
+        req.nomArchivo = myArray
+        // console.log("HOLA Xd", req.nomArchivo)
+        callback(null,  nomFile);
     }
 
+
 });
+
 
 const cargar = multer ({
     storage: rutaAlmacen,
-// limits:{fileSize:4000000},
-
- 
-
-//  fileFilter:(req, file, callback) =>{
-
-  
-//  const filetypes = /jpg|png|/;
-//     const mimetype = filetypes.test(file.mimetype);
-//     const extname = filetypes.test(path.extname(file.originalname));
-
-//         if(mimetype && extname){
-//             return callback(null, true);
-//         }else{
-
-// callback('Error: esto no es una imagen');
-//         }
-       
-//   }
-
-
 });
 
-
-
+const multiupload = cargar.fields([{ name:'licencia' }, {name:'licencia_trasera' }]);
 
 /*=============================================================*/
-router.post('/enviar', cargar.single('licencia'), crud.enviar);
+router.post('/enviar', multiupload, crud.enviar);
 /*=============================================================*/
+
+
 
 
 
@@ -72,15 +57,32 @@ router.get('/mensaje', (req, res) => {
 
 router.get('/mostrardatos', (req, res) => {
 
-    conexion.query('SELECT * FROM tblformulario_registro', (error, results) => {
-        if (error) {
-            throw error;
-        } else {
-            res.render('./mostrardatos', {
-                results: results
-            });
-        }
-    });
+    var sql = "SELECT * FROM tblformulario_registro LIMIT 1";
+    conexion.query(sql, function (err, result) {
+    if (err) throw err;
+    const hola = JSON.parse(result[0].licencia_conduccion)
+    console.log("TEST1 >>> ",hola.frontal);
+    console.log("TEST2 >>> ",hola.trasera);
+    res.render('./mostrardatos', {hola})
+  });
+    // console.log(JSON.parse(resul[0]))
+
+    // conexion.query('SELECT * FROM tblformulario_registro', (error, results) => {
+    //     if (error) {
+    //         throw error;
+    //     } else {
+
+    //        const  img1=  JSON.parse(results.licencia_conduccion) // CONVERTIR  JSON A UN OBJETO
+    //        console.log(img1)
+    //         res.render('./mostrardatos', {
+    //             results: results, 
+    //             img1
+    //         });
+
+    //     }
+
+
+    // });
 
 });
 

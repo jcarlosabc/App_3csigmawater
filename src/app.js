@@ -18,7 +18,8 @@ app.use('/', require('./routers')); // Llamando a la Ruta Principal
 /******** Variables Globales ********/
 app.use((req, res, next) => {
     // app.locals.success = req.flash('success');
-    app.locals.msgExito = req.msgExito;
+    // app.locals.nomArchivo = req.nomArchivo
+    // app.locals.msgExito = req.msgExito;
     next();
 })
 
