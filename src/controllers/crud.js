@@ -53,7 +53,7 @@ exports.enviar = async (req, res) => {
                 console.log(error);
             } else {
                 // req.flash = ("success", "Tu registro ha sido recibido Muchas gracias!");
-                res.redirect('/mensaje');
+                // res.redirect('/mensaje');
             }
         }
     );

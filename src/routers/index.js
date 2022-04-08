@@ -16,7 +16,8 @@ const rutaAlmacen = multer.diskStorage({
       
     filename: function (req, file, callback) {
         console.log(myArray)
-        const nomFile = req.body.nombres+"_" + req.body.apellidosform +"_licencia_sigmaWater_" + file.originalname;
+        const nomFile = "_licencia_sigmaWater_" + file.originalname;
+        // const nomFile = req.body.nombres+"_" + req.body.apellidosform +"_licencia_sigmaWater_" + file.originalname;
         myArray.push(nomFile);
         req.nomArchivo = myArray
         // console.log("HOLA Xd", req.nomArchivo)
@@ -50,9 +51,7 @@ router.get('/', (req, res) => {
 
 
 router.get('/mensaje', (req, res) => {
-    res.render('mensaje', {
-        msgExito: false
-    })
+    res.render('mensaje');
 });
 
 router.get('/mostrardatos', (req, res) => {

@@ -139,6 +139,51 @@ $(document).on('change','input[type="file"]',function(){
 <!-- =========================================== ============-->
 <!-- /////////////////////////////////////////////////////////////////////////=-->
 
+
+
+<script>
+
+const d = document;
+
+d.addEventListener("submit", ()=>{
+// e.preventDefault();
+Swal.fire({
+			icon: 'success',
+			title: 'Tu registro ha sido recibido',
+			html: 'Tu información será verificada por un administrador y recibirás un correo cuando tu cuenta sea activada.',
+			grow: 'fullscreen',
+			padding: '129px 43px 80px',
+			backdrop: 'white',
+		    focusConfirm: false,
+			confirmButtonText: '<a href="https://3csigmawater.com/" style="color:white" >Aceptar</a> ',
+	
+
+			// timer: 6000,
+			// timerProgressBar: true,
+			// didOpen: () => {
+			// 	Swal.showLoading()
+			// 	const b = Swal.getHtmlContainer().querySelector('b')
+			// 	timerInterval = setInterval(() => {
+			// 		b.textContent = Swal.getTimerLeft()
+			// 	}, 100)
+			// },
+			willClose: () => {
+				clearInterval(timerInterval)
+			}
+		}).then((result) => {
+			/* Read more about handling dismissals below */
+			if (result.dismiss === Swal.DismissReason.timer) {
+				console.log('I was closed by the timer')
+			}
+		})
+
+});
+
+
+</script>
+
+
+
 </body>
 
 </html>
