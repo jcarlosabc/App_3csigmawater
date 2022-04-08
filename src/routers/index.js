@@ -50,8 +50,8 @@ router.get('/', (req, res) => {
 });
 
 
-router.get('/mensaje', (req, res) => {
-    res.render('mensaje');
+router.get('/login', (req, res) => {
+    res.render('login');
 });
 
 router.get('/mostrardatos', (req, res) => {
