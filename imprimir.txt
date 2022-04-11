@@ -23,3 +23,6 @@
 
         <% }) %>
         </tbody>
+
+          <img src="<%=hola.frontal%>" width="400px">
+  <img src="<%=hola.trasera%>" width="400px">

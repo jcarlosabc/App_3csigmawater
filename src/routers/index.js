@@ -5,7 +5,8 @@ const multer = require('multer');
 const path = require('path');
 const crud = require('../controllers/crud');
 
-// licencia_trasera
+
+
 let myArray = [];
  
 const rutaAlmacen = multer.diskStorage({
@@ -24,8 +25,8 @@ const rutaAlmacen = multer.diskStorage({
         callback(null,  nomFile);
     }
 
-
 });
+
 
 
 const cargar = multer ({
@@ -34,14 +35,9 @@ const cargar = multer ({
 
 const multiupload = cargar.fields([{ name:'licencia' }, {name:'licencia_trasera' }]);
 
-/*=============================================================*/
-router.post('/enviar', multiupload, crud.enviar);
-/*=============================================================*/
 
 
-
-
-
+/*==================RUTAS =====================*/
 
 // Redireccionar al Login - Ruta principal, local=> localhost:3000 || server=> app.3csigmawater.com
 router.get('/', (req, res) => {
@@ -49,11 +45,19 @@ router.get('/', (req, res) => {
     res.redirect('/register')
 });
 
+router.get('/register', (req, res) => {
+    res.render('register');
+})
 
 router.get('/login', (req, res) => {
-    res.render('login');
+    res.render('login', {alert:false});
 });
 
+router.get('/dashboard', crud.isAuthenticated,  (req, res) => {
+    res.render('dashboard', {correo:req.correo});
+})
+
+//FIXME: --PENDIENTE POR PASAR ==
 router.get('/mostrardatos', (req, res) => {
 
     var sql = "SELECT * FROM tblformulario_registro LIMIT 1";
@@ -85,12 +89,15 @@ router.get('/mostrardatos', (req, res) => {
 
 });
 
-/*==================RUTA PARA CREAR REGISTRO =====================*/
+/*==================RUTAS =====================*/
 
-router.get('/register', (req, res) => {
-    res.render('register');
-})
+/*=============================================================*/
+router.post('/enviar', multiupload, crud.enviar);
+/*=============================================================*/
 
+/*=============================================================*/
+
+/*=============================================================*/
 
 
 module.exports = router;
