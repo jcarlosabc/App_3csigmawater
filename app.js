@@ -10,7 +10,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 //seteamos la carpeta public para archivos estáticos
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, './public')));
 
 //para procesar datos enviados desde forms
 app.use(express.urlencoded({extended:true}))
