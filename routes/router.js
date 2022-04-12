@@ -67,6 +67,16 @@ router.get('/detalle_facturas',authController.isAuthenticated, (req, res)=>{
     res.render('detalle_facturas' , {correo:req.correo})
 })
 
+router.get('/lista-clientes',authController.isAuthenticated, (req, res)=>{
+    res.render('lista-clientes' , {correo:req.correo})
+})
+
+router.get('/confirmar-correo',authController.isAuthenticated, (req, res)=>{
+    res.render('confirmar-correo' , {correo:req.correo})
+})
+
+
+
 
 
 //FIXME: ========= PAGINAS DESHABILITADAS =============
