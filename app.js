@@ -3,6 +3,9 @@ const dotenv = require('dotenv')
 const cookieParser = require('cookie-parser')
 const path = require('path');
 
+
+
+
 const app = express()
 
 //seteamos el motor de plantillas
@@ -15,6 +18,8 @@ app.use(express.static(path.join(__dirname, './public')));
 //para procesar datos enviados desde forms
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
+
+
 
 //seteamos las variables de entorno
 dotenv.config({path: './env/.env'})
@@ -31,6 +36,7 @@ app.use(function(req, res, next) {
         res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
     next();
 });
+
 
 
 /*========= ESCUCHANDO AL SERVIDOR EN EL PUERTO 3000 ===========*/

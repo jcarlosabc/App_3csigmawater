@@ -678,19 +678,21 @@ a {
 } */
 
 ::placeholder {
-  color: rgb(0, 0, 0);
+  color: #5b1b74;
+  background:white;
   padding: 12px 1px 8px 8px;
-  margin: 12px;
-  font-size: 13px;
+  margin: 15px;
+
+  font-size: 12px;
 }
 
 .form-w3ls-left-info input[type="email"] {
   width: 284px;
   height: 47px;
   left: 76px;
+  font-size: 13px;
   top: 357px;
   border: none;
-
   opacity: 0.29;
   border-radius: 5px;
 }
@@ -708,7 +710,7 @@ input {
   left: 76px;
   top: 357px;
   border: none;
-
+  font-size: 13px;
   opacity: 0.29;
   border-radius: 5px;
   margin-bottom: -10px;
@@ -717,7 +719,7 @@ input {
 .form-w3ls-left-info button.btn {
   background: #ffffff;
   margin-top: 27px;
-  color: #812082;
+  color: #76368f;
   font-size: 14px;
  
   padding: 0.7em 3em;
@@ -793,11 +795,9 @@ button.btn.reg {
 /* social-icons footer */
 ul.w3layouts-icons {
      /* float: right; */
-     position: absolute;
-     left: 1057px;
-     /* width: 24px; */
+      /* width: 24px; */
      /* height: 24px; */
-     top: 44px;
+     /* top: 44px; */
 }
 
 ul.w3layouts-icons li {

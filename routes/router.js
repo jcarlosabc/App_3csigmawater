@@ -58,6 +58,26 @@ router.get('/dashboard', authController.isAuthenticated, (req, res)=>{
     res.render('dashboard', {correo:req.correo})
 })
 
+router.get('/lista_facturas',authController.isAuthenticated, (req, res)=>{
+    res.render('lista_facturas' , {correo:req.correo})
+})
+
+
+router.get('/detalle_facturas',authController.isAuthenticated, (req, res)=>{
+    res.render('detalle_facturas' , {correo:req.correo})
+})
+
+
+
+//FIXME: ========= PAGINAS DESHABILITADAS =============
+
+// router.get('/calendar', authController.isAuthenticated,(req, res)=>{
+//     res.render('calendar',{correo:req.correo})
+// })
+
+
+
+
 /*==================RUTAS =====================*/
 
 
@@ -70,5 +90,7 @@ router.post('/login', authController.login)
 /*=============================================================*/
 router.get('/logout', authController.logout)
 /*=============================================================*/
+
+
 
 module.exports = router

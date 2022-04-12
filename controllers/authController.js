@@ -105,8 +105,8 @@ exports.login = async (req, res) => {
             res.render('login', {
                 alert: true,
                 alertTitle: "Opss",
-                alertMessage: "Ingrese un usuario y password",
-                alertIcon: 'info',
+                alertMessage: "Ingrese un usuario y contraseña",
+                alertIcon: 'error',
                 showConfirmButton: true,
                 timer: false,
                 ruta: 'login'
@@ -117,7 +117,7 @@ exports.login = async (req, res) => {
                     res.render('login', {
                         alert: true,
                         alertTitle: "Error",
-                        alertMessage: "Usuario y/o Password incorrectas",
+                        alertMessage: "Usuario y/o Contraseñas incorrectas",
                         alertIcon: 'error',
                         showConfirmButton: true,
                         timer: false,
@@ -142,11 +142,11 @@ exports.login = async (req, res) => {
                     res.cookie('jwt', token, cookiesOptions)
                     res.render('login', {
                         alert: true,
-                        alertTitle: "Conexión exitosa",
-                        alertMessage: "¡LOGIN CORRECTO!",
+                        alertTitle: "¡ BIENVENIDO !",
+                        alertMessage: "",
                         alertIcon: 'success',
-                        showConfirmButton: false,
-                        timer: 800,
+                         showConfirmButton: false,
+                        timer: 1200,
                         ruta: './dashboard'
                     })
                 }
@@ -182,3 +182,4 @@ exports.logout = (req, res) => {
     res.clearCookie('jwt')
     return res.redirect('/dashboard')
 }
+
