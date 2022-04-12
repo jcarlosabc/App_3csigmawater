@@ -10,7 +10,7 @@
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
   <meta content="Themesbrand" name="author">
   <!-- App favicon -->
-  <link rel="shortcut icon" href="./cssdash/images/favicon.ico">
+  <link rel="shortcut icon" href="./cssdash/images/favicon.png">
 
   <base href="#">
 
@@ -52,27 +52,8 @@
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
-            <div class="navbar-brand-box">
-
-                <a href="#" class="logo logo-dark">
-                    <span class="logo-sm">
-                        <img src="./cssdash/images/logo-sm.svg" alt="" height="24">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="./cssdash/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Minia</span>
-                    </span>
-                </a>
-
-                <a href="/" class="logo logo-light">
-                    <span class="logo-sm">
-                        <img src="./cssdash/images/logo-sm.svg" alt="" height="24">
-                    </span>
-                    <span class="logo-lg">
-                        <img src="./cssdash/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Minia</span>
-                    </span>
-                </a>
                 
-            </div>
+            <%- include ('partials/logonav.ejs')%>
 
             <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn">
                 <i class="fa fa-fw fa-bars"></i>
@@ -292,76 +273,19 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="grid"></i>
-                        <span data-key="t-apps">Aplicaciones</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <!-- <li>
-                            <a href="calendar">
-                                <span data-key="t-calendar">Calendario</span>
-                            </a>
-                        </li> -->
-                    <!--         
-                        <li>
-                            <a href="apps-chat">
-                                <span data-key="t-chat">Chat</span>
-                            </a>
-                        </li> -->
-        
-                        <!-- <li>
-                            <a href="javascript: void(0);" class="has-arrow">
-                                <span data-key="t-email">Correo electrónico</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="email-inbox" data-key="t-inbox">Bandeja de entrada</a></li>
-                                <li><a href="email-read" data-key="t-read-email">correo electrónico Leer el</a></li>
-                            </ul>
-                        </li> -->
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow">
-                                <span data-key="t-invoices">Facturas</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="/lista_facturas" data-key="t-invoice-list">Lista de facturas</a></li>
-                                <li><a href="/detalle_facturas" data-key="t-invoice-detail">Detalle de la factura</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow">
-                                <span data-key="t-contacts">Clientes</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <!-- <li><a href="contacts-grid" data-key="t-user-grid">Cuadrícula de usuario</a></li> -->
-                                <li><a href="lista-clientes" data-key="t-user-list">Lista de clientes</a></li>
-                                <!-- <li><a href="contacts-profile" data-key="t-profile">Perfil</a></li> -->
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+             
 
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="users"></i>
-                        <span data-key="t-authentication">Autenticación</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <!-- <li><a href="pages-login" data-key="t-login">Acceso</a></li>
-                        <li><a href="pages-register" data-key="t-register">Registrarse</a></li>
-                        <li><a href="pages-recoverpw" data-key="t-recover-password">Recuperar contraseña</a></li>
-                        <li><a href="pages-lock-screen" data-key="t-lock-screen">Bloquear pantalla </a></li> -->
-                        <li><a href="/confirmar-correo" data-key="t-confirm-mail">Confirmar correo</a></li>
-                        <!-- <li><a href="pages-email-verification" data-key="t-email-verification">verificacion de email</a></li> -->
-                        <!-- <li><a href="pages-two-step-verification" data-key="t-two-step-verification">Verificación de dos pasos</a></li> -->
-                    </ul>
-                </li>
+                            <!--==================FIXME:=====FACTURA CLIENTE====================  -->
+                            <%- include ('partials/acuerdo-vendedor.ejs')%>
+                                <!--==================FIXME:=====FACTURA CLIENTE====================  -->
 
-            
+                                <!--==================FIXME:=====FACTURA CLIENTE====================  -->
+                                <%- include ('partials/factura-cliente.ejs')%>
+                                    <!--==================FIXME:=====FACTURA CLIENTE====================  -->
 
-            <!--==================FIXME:=====PAGINAS====================  -->
-            <%- include ('partials/seccion-paginas.ejs')%>
-            <!--==================FIXME:=====PAGINAS====================  -->
+                                    <!--==================FIXME:=====PAGINAS====================  -->
+                                    <%- include ('partials/seccion-paginas.ejs')%>
+                                        <!--==================FIXME:=====PAGINAS====================  -->
         
                         <!-- <li>
                             <a href="layouts-horizontal">
@@ -374,35 +298,13 @@
                   <!--==================FIXME:=====ELEMENTOS====================  -->
         
 
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="share-2"></i>
-                        <span data-key="t-multi-level">Multi nivel</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="javascript: void(0);" data-key="t-level-1-1">Nivel 1 1</a></li>
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow" data-key="t-level-1-2">Nivel 1 2</a>
-                            <ul class="sub-menu" aria-expanded="true">
-                                <li><a href="javascript: void(0);" data-key="t-level-2-1">Nivel 2 1</a></li>
-                                <li><a href="javascript: void(0);" data-key="t-level-2-2">Nivel 2 2</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
 
             </ul>
 
-            <div class="card sidebar-alert border-0 text-center mx-4 mb-0 mt-5">
-                <div class="card-body">
-                    <img src="./cssdash/images/giftbox.png" alt="">
-                    <div class="mt-4">
-                        <h5 class="alertcard-title font-size-16">Acceso ilimitado</h5>
-                        <p class="font-size-13">Upgrade your plan from a Free trial, to select 'Business Plan.</p>
-                        <a href="#!" class="btn btn-primary mt-2">Actualizar ahora</a>
-                    </div>
-                </div>
-            </div>
+           <!--==================FIXME:=====ELEMENTOS====================  -->
+                 <%- include ('partials/copiar-codigo.ejs')%>
+    <!--==================FIXME:=====ELEMENTOS====================  -->
+
         </div>
         <!-- Sidebar -->
     </div>
