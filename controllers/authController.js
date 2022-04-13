@@ -142,7 +142,7 @@ exports.login = async (req, res) => {
                     res.cookie('jwt', token, cookiesOptions)
                     res.render('login', {
                         alert: true,
-                        alertTitle: "¡ BIENVENIDO !",
+                        alertTitle: "¡Bienvenido!",
                         alertMessage: "",
                         alertIcon: 'success',
                          showConfirmButton: false,

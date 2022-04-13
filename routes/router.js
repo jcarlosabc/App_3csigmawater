@@ -48,32 +48,44 @@ router.get('/', (req, res) => {
 
 router.get('/register', (req, res)=>{
     res.render('register')
-})
+});
 
 router.get('/login', (req, res)=>{
     res.render('login', {alert:false})
-})
+});
 
 router.get('/dashboard', authController.isAuthenticated, (req, res)=>{    
     res.render('dashboard', {correo:req.correo})
-})
+});
 
 router.get('/lista_facturas',authController.isAuthenticated, (req, res)=>{
     res.render('lista_facturas' , {correo:req.correo})
-})
+});
 
 
 router.get('/detalle_facturas',authController.isAuthenticated, (req, res)=>{
     res.render('detalle_facturas' , {correo:req.correo})
-})
+});
 
 router.get('/lista-clientes',authController.isAuthenticated, (req, res)=>{
     res.render('lista-clientes' , {correo:req.correo})
-})
+});
 
-router.get('/confirmar-correo',authController.isAuthenticated, (req, res)=>{
-    res.render('confirmar-correo' , {correo:req.correo})
-})
+
+router.get('/nuevo-cliente',authController.isAuthenticated, (req, res)=>{
+    res.render('nuevo-cliente' , {correo:req.correo})
+});
+
+router.get('/referidos',authController.isAuthenticated, (req, res)=>{
+    res.render('referidos' , {correo:req.correo})
+});
+
+
+
+// router.get('/confirmar-correo',authController.isAuthenticated, (req, res)=>{
+//     res.render('confirmar-correo' , {correo:req.correo})
+// })
+
 
 
 
