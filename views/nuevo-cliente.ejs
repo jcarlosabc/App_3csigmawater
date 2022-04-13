@@ -12,7 +12,18 @@
     <link rel="shortcut icon" href="./cssdash/images/favicon.png">
 
     <base href="#">
-
+    <script type="text/javascript">
+        function showContent() {
+            element = document.getElementById("content");
+            check = document.getElementById("check");
+            if (check.checked) {
+                element.style.display='block';
+            }
+            else {
+                element.style.display='none';
+            }
+        }
+    </script>
 
 
     <!-- twitter-bootstrap-wizard css -->
@@ -29,6 +40,29 @@
     <link rel="stylesheet" type="text/css" href="./cssdash/css/icons.min.css" />
     <!-- App Css-->
     <link rel="stylesheet" type="text/css" href="./cssdash/css/app.min.css" id="app-style" />
+
+
+
+
+
+
+
+   <!-- choices css -->
+   <link
+   href="./cssdash/libs/choices.js/public/assets/styles/choices.min.css"
+   rel="stylesheet" type="text/css" />
+
+<!-- color picker css -->
+<link rel="stylesheet"
+   href="./cssdash/libs/@simonwep/pickr/themes/classic.min.css" /> <!-- 'classic' theme -->
+<link rel="stylesheet"
+   href="./cssdash/libs/@simonwep/pickr/themes/monolith.min.css" />
+<!-- 'monolith' theme -->
+<link rel="stylesheet"
+   href="./cssdash/libs/@simonwep/pickr/themes/nano.min.css" /> <!-- 'nano' theme -->
+<!-- datepicker css -->
+<link rel="stylesheet"
+   href="./cssdash/libs/flatpickr/flatpickr.min.css">
 
 </head>
 
@@ -280,7 +314,7 @@
                         <li>
                             <a href="/dashboard">
                                 <i class="fas fa-home"></i>
-                               <span data-key="t-dashboard" >Dashboard</span>
+                                <span data-key="t-dashboard">Dashboard</span>
                             </a>
                         </li>
 
@@ -300,11 +334,11 @@
                                     <%- include ('partials/elementos.ejs')%>
                                         <!--==================FIXME:=====ELEMENTOS====================  -->
 
-                                     </ul>
+                    </ul>
 
-                                    <!--==================FIXME:=====ELEMENTOS====================  -->
-                                    <%- include ('partials/copiar-codigo.ejs')%>
-                                        <!--==================FIXME:=====ELEMENTOS====================  -->
+                    <!--==================FIXME:=====ELEMENTOS====================  -->
+                    <%- include ('partials/copiar-codigo.ejs')%>
+                        <!--==================FIXME:=====ELEMENTOS====================  -->
 
 
                 </div>
@@ -353,7 +387,7 @@
                                             <li class="nav-item">
                                                 <a href="#progress-seller-details" class="nav-link" data-toggle="tab">
                                                     <div class="step-icon" data-bs-toggle="tooltip"
-                                                        data-bs-placement="top" title="Seller Details">
+                                                        data-bs-placement="top" title="SOLICITANTE">
                                                         <i class="bx bx-list-ul"></i>
                                                     </div>
                                                 </a>
@@ -361,11 +395,32 @@
                                             <li class="nav-item">
                                                 <a href="#progress-company-document" class="nav-link" data-toggle="tab">
                                                     <div class="step-icon" data-bs-toggle="tooltip"
-                                                        data-bs-placement="top" title="Company Document">
+                                                        data-bs-placement="top" title="CASA">
                                                         <i class="bx bx-book-bookmark"></i>
                                                     </div>
                                                 </a>
                                             </li>
+
+
+                                            <li class="nav-item">
+                                                <a href="#progress-company-document2" class="nav-link"
+                                                    data-toggle="tab">
+                                                    <div class="step-icon" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="INGRESOS">
+                                                        <i class="bx bx-book-bookmark"></i>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="#progress-company-document3" class="nav-link"
+                                                    data-toggle="tab">
+                                                    <div class="step-icon" data-bs-toggle="tooltip"
+                                                        data-bs-placement="top" title="CO- SOLICITANTE">
+                                                        <i class="bx bx-book-bookmark"></i>
+                                                    </div>
+                                                </a>
+                                            </li>
+
 
                                             <li class="nav-item">
                                                 <a href="#progress-bank-detail" class="nav-link" data-toggle="tab">
@@ -375,6 +430,9 @@
                                                     </div>
                                                 </a>
                                             </li>
+
+                                           
+
                                         </ul>
                                         <!-- wizard-nav -->
 
@@ -385,298 +443,761 @@
                                         </div>
                                         <div class="tab-content
                                     twitter-bs-wizard-tab-content">
+
+
+                         <!-- //TODO:  ================== SOLICITANTE ========== -->
+
                                             <div class="tab-pane" id="progress-seller-details">
                                                 <div class="text-center mb-4">
-                                                    <h5>Formulario de cliente</h5>
-                                                    <p class="card-title-desc">Complete toda la informacion a continuación</p>
+                                                    <h5>SOLICITANTE</h5>
+                                                    <p class="card-title-desc">Complete toda la informacion a
+                                                        continuación</p>
                                                 </div>
-                                                <form action="/registro-cliente" method="post" id=""    >   
+                                                <form action="/registro-cliente" method="post" id="">
                                                     <div class="row">
-                                                        <div class="col-lg-6">
+                                                        <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="progresspill-firstname-input">Nombres</label>
-                                                                <input type="text" class="form-control required"
+                                                                <label for="progresspill-firstname-input">Monto
+                                                                    financiero*</label>
+                                                                <input type="number" class="form-control required"
                                                                     id="progresspill-firstname-input" required="">
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6">
+
+                                                        <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="progresspill-lastname-input">Apellidos</label>
-                                                                <input type="text" class="form-control"
+                                                                <label for="progresspill-firstname-input">ID de cliente
+                                                                    / DL*</label>
+                                                                <input type="number" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-firstname-input">Fecha de
+                                                                    expedición de identificaión*</label>
+                                                                <input type="date" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-firstname-input">Fecha de
+                                                                    caducidad del documento de identidad*</label>
+                                                                <input type="date" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-firstname-input">Cliente Seguro
+                                                                    Social / ITIN*</label>
+                                                                <input type="number" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-1">
+                                                            <div>
+                                                                <div class="form-check
+                                                                    mb-3">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="formRadios" id="formRadios1" checked>
+                                                                    <label class="form-check-label" for="formRadios1">
+                                                                        Social
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="formRadios" id="formRadios2">
+                                                                    <label class="form-check-label" for="formRadios2">
+                                                                        En
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-lastname-input">Fecha de
+                                                                    cumpleaños*</label>
+                                                                <input type="date" class="form-control"
                                                                     id="progresspill-lastname-input">
                                                             </div>
-                                                        </div>                                                    </div>                                                   <div class="row">
-                                                        <div class="col-lg-6">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="progresspill-phoneno-input">Telefono</label>
-                                                                <input type="text" class="form-control"
+                                                                <label for="progresspill-phoneno-input">Teléfono
+                                                                    móvil*</label>
+                                                                <input type="tel" class="form-control"
                                                                     id="progresspill-phoneno-input">
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6">
+                                                        <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="progresspill-email-input">Correo</label>
+                                                                <label for="progresspill-email-input">Teléfono
+                                                                    Auxiliar</label>
+                                                                <input type="tel" class="form-control"
+                                                                    id="progresspill-email-input">
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-email-input">Apellido*</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="progresspill-email-input">
+                                                            </div>
+
+
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-email-input">Primer
+                                                                    nombre*</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="progresspill-email-input">
+                                                            </div>
+
+
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-email-input">Inicio
+                                                                    medio</label>
+                                                                <input type="number" class="form-control"
+                                                                    id="progresspill-email-input">
+                                                            </div>
+
+
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-email-input">Correo
+                                                                    electronico*</label>
                                                                 <input type="email" class="form-control"
                                                                     id="progresspill-email-input">
                                                             </div>
 
-                                                            
-                                                        </div>
-                                                    </div>
-                                                  
 
-                                           
-                                                <ul class="pager wizard
+                                                        </div>
+
+                                                    </div>
+
+                                                    <ul class="pager wizard
                                             twitter-bs-wizard-pager-link">
-                                                    <li class="next"><a href="javascript: void(0);"
-                                                            class="btn btn-primary"  onclick="nextTab()">Next <i class="bx
+                                                        <li class="next"><a href="javascript: void(0);"
+                                                                class="btn btn-primary" onclick="nextTab()">Siguiente <i
+                                                                    class="bx
                                                         bx-chevron-right ms-1"></i></a></li>
-                                                </ul>
-                                        
+                                                    </ul>
+
 
 
                                             </div>
+                          <!-- //TODO:  ================== SOLICITANTE ========== -->
+
+                          <!-- //TODO:  ================== CASA ========== -->
                                             <div class="tab-pane" id="progress-company-document">
-                                                <div>
-                                                    <div class="text-center mb-4">
-                                                        <h5>Company Document</h5>
-                                                        <p class="card-title-desc">Fill
-                                                            all information below</p>
+
+                                                <div class="text-center mb-4">
+                                                    <h5>CASA</h5>
+                                                    <p class="card-title-desc">Fill
+                                                        all information below</p>
+                                                </div>
+                                                <div class="moverp">
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-firstname-input">Dirección de
+                                                                    búsqueda*</label>
+                                                                <input type="text" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label
+                                                                    for="progresspill-firstname-input">Ciudad*</label>
+                                                                <input type="text" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                               
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="progresspill-pancard-input"
-                                                                        class="form-label">PAN
-                                                                        Card</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="progresspill-pancard-input">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="progresspill-vatno-input"
-                                                                        class="form-label">VAT/TIN
-                                                                        No.</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="progresspill-vatno-input">
-                                                                </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-firstname-input"> State -
+                                                                    Expresar*</label>
+                                                                <input type="number" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
                                                             </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="progresspill-cstno-input"
-                                                                        class="form-label">CST
-                                                                        No.</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="progresspill-cstno-input">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="progresspill-servicetax-input"
-                                                                        class="form-label">Service
-                                                                        Tax No.</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="progresspill-servicetax-input">
-                                                                </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-firstname-input">Zip -
+                                                                    Cremallera*</label>
+                                                                <input type="number" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
                                                             </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="progresspill-companyuin-input"
-                                                                        class="form-label">Company
-                                                                        UIN</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="progresspill-companyuin-input">
-                                                                </div>
-                                                            </div>
 
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="progresspill-declaration-input"
-                                                                        class="form-label">Declaration</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="progresspill-declaration-input">
-                                                                </div>
+                                                    </div>
+
+
+
+                                                    <div class="col-md-5">
+                                                        <div>
+
+                                                            <p>Indique los datos del domicilio del solicitante / Indique
+                                                                la información sobre la casa del solicitante
+                                                                ¿Está hipotecado, pagado o alquilado? esta hipotecada,
+                                                                pagada o rentada?</p>
+
+                                                            <div class="form-check mb-3">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="formRadios" id="formRadios1">
+                                                                <label class="form-check-label" for="formRadios1">
+                                                                    Hipoteca </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="formRadios" id="formRadios2">
+                                                                <label class="form-check-label"
+                                                                    for="formRadios2">Pagados</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="formRadios" id="formRadios3">
+                                                                <label class="form-check-label"
+                                                                    for="formRadios3">Alquilar</label>
                                                             </div>
                                                         </div>
-                                                 
+                                                    </div>
+
+
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-firstname-input"> Sociedad
+                                                                    hipotecaria*</label>
+                                                                <input type="text" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-firstname-input">Pago mensual
+                                                                    $*</label>
+                                                                <input type="text" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-firstname-input"> Tiempo
+                                                                    residente Año*</label>
+                                                                <input type="text" class="form-control required"
+                                                                    id="progresspill-firstname-input" required=""
+                                                                    placeholder="Si aplica ? pero puede escribir 0 (cero)">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-firstname-input">Tiempo
+                                                                    residente Mes:*</label>
+                                                                <input type="text" class="form-control required"
+                                                                    id="progresspill-firstname-input" required=""
+                                                                    placeholder="Si aplica ? pero puede escribir 0 (cero)">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
                                                     <ul class="pager wizard
                                                 twitter-bs-wizard-pager-link">
                                                         <li class="previous"><a href="javascript:
                                                         void(0);" class="btn
                                                         btn-primary" onclick="nextTab()"><i class="bx
                                                             bx-chevron-left
-                                                            me-1"></i> Previous</a></li>
+                                                            me-1"></i> Regresar</a></li>
                                                         <li class="next"><a href="javascript:
                                                         void(0);" class="btn
-                                                        btn-primary" onclick="nextTab()">Next
+                                                        btn-primary" onclick="nextTab()">Siguiente
                                                                 <i class="bx
                                                             bx-chevron-right
                                                             ms-1"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <div class="tab-pane" id="progress-bank-detail">
-                                         
+                          <!-- //TODO:  ================== CASA ========== -->
+
+                          <!-- //TODO:=================== INGRESOS -->
+
+                                            <div class="tab-pane" id="progress-company-document2">
+                                                <div>
                                                     <div class="text-center mb-4">
-                                                        <h5>Bank Details</h5>
-                                                        <p class="card-title-desc">Fill
-                                                            all information below</p>
+                                                   
+                                                        <!-- <p class="card-title-desc">Fill
+                                                            all information below</p> -->
                                                     </div>
-                                                  
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="progresspill-namecard-input"
-                                                                        class="form-label">Name
-                                                                        on Card</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="progresspill-namecard-input">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label class="form-label">Credit
-                                                                        Card Type</label>
-                                                                    <select class="form-select">
-                                                                        <option selected>Select
-                                                                            Card Type</option>
-                                                                        <option value="AE">American
-                                                                            Express</option>
-                                                                        <option value="VI">Visa</option>
-                                                                        <option value="MC">MasterCard</option>
-                                                                        <option value="DI">Discover</option>
-                                                                    </select>
-                                                                </div>
+                                                    <h4 style="text-align: center;">Ingresos</h4>
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-firstname-input">Empleado
+                                                                    solcitante*</label>
+                                                                <input type="text" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
                                                             </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="progresspill-cardno-input"
-                                                                        class="form-label">Credit
-                                                                        Card Number</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="progresspill-cardno-input">
-                                                                </div>
-                                                            </div>
 
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="progresspill-card-verification-input"
-                                                                        class="form-label">Card
-                                                                        Verification
-                                                                        Number</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="progresspill-card-verification-input">
-                                                                </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-firstname-input">Años*</label>
+                                                                <input type="number" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
                                                             </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="progresspill-expiration-input"
-                                                                        class="form-label">Expiration
-                                                                        Date</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="progresspill-expiration-input">
-                                                                </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-firstname-input">Meses</label>
+                                                                <input type="text" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
                                                             </div>
-
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-firstname-input">Salario
+                                                                    mensual*</label>
+                                                                <input type="number" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label
+                                                                    for="progresspill-firstname-input">Ocupacion</label>
+                                                                <input type="text" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
+                                                            </div>
                                                         </div>
 
-                                                        <input type="type" class="btn btn-primary"   value="Enviar">
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label
+                                                                    for="progresspill-firstname-input">Telefono</label>
+                                                                <input type="tel" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
+                                                            </div>
+                                                        </div>
 
-                                                    </form>
+
+                                                    </div>
+
+                                                    <h4 style="text-align: center;" >Otros Ingresos </h4>
+
+                                                    <div class="row" >
+
+
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="progresspill-firstname-input">Empleador anterior</label>
+                                                                <input type="text" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label
+                                                                    for="progresspill-firstname-input">
+                                                                    Fuente de otros ingresos</label>
+                                                                <input type="text" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label
+                                                                    for="progresspill-firstname-input">Ingresos adicionales</label>
+                                                                <input type="number" class="form-control required"
+                                                                    id="progresspill-firstname-input" required="">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+
                                                     <ul class="pager wizard
                                                 twitter-bs-wizard-pager-link">
                                                         <li class="previous"><a href="javascript:
                                                         void(0);" class="btn
                                                         btn-primary" onclick="nextTab()"><i class="bx
                                                             bx-chevron-left
-                                                            me-1"></i> Previous
-                                                        </a></li>
-                                                        <li class="float-end"><a href="javascript:
+                                                            me-1"></i> Regresar</a></li>
+                                                        <li class="next"><a href="javascript:
                                                         void(0);" class="btn
-                                                        btn-primary" data-bs-toggle="modal"
-                                                                data-bs-target=".confirmModal">Save
-                                                                Changes</a></li>
+                                                        btn-primary" onclick="nextTab()">Siguiente
+                                                                <i class="bx
+                                                            bx-chevron-right
+                                                            ms-1"></i></a></li>
                                                     </ul>
                                                 </div>
+                                            </div>
+                           <!-- //TODO:=================== INGRESOS -->
+
+
+
+                            <!-- //TODO:=================== CO - SOLICITANTE  =========-->
+
+                            <div class="tab-pane" id="progress-company-document3" >
+                                <div>
+                                    <div class="text-center mb-4">
+                                   
+                                        <!-- <p class="card-title-desc">Fill
+                                            all information below</p> -->
+                                    </div>
+                                    <h4 style="text-align: center;">CO-SOLICITANTE</h4>
+                                    <div class="row">
+                                       
+                                        <b  style="text-align: center;"  >La solicitud tiene co-solicitante</b>
+                                            <input type="checkbox" name="check" id="check" value="1" onchange="javascript:showContent()" />
+                                            <div id="content" style="display: none; ">
+                                                
+
+
+
+                                                <div class="row">
+                                                    <div class="col-lg-4" style="text-align: center;">
+                                                        <div class="mb-3">
+                                                            <label for="progresspill-firstname-input">identificación / licencia de conducir*</label>
+                                                            <input type="text" class="form-control required"
+                                                                id="progresspill-firstname-input" required="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-4"  style="text-align: center;" >
+                                                        <div class="mb-3">
+                                                            <label for="progresspill-firstname-input">Expedición:*</label>
+                                                            <input type="date" class="form-control required"
+                                                                id="progresspill-firstname-input" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4" style="text-align: center;"  >
+                                                        <div class="mb-3">
+                                                            <label for="progresspill-firstname-input">Vencimiento:</label>
+                                                            <input type="date" class="form-control required"
+                                                                id="progresspill-firstname-input" required="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-4" style="text-align: center;"  >
+                                                        <div class="mb-3">
+                                                            <label for="progresspill-firstname-input">Seguro social / ITIN</label>
+                                                            <input type="number" class="form-control required"
+                                                                id="progresspill-firstname-input" required="">
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    
+                                                    <div class="col-md-1">
+                                                        <div>
+                                                            <div class="form-check
+                                                                mb-3">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="formRadios" id="formRadios1" checked>
+                                                                <label class="form-check-label" for="formRadios1">
+                                                                    Social
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="formRadios" id="formRadios2">
+                                                                <label class="form-check-label" for="formRadios2">
+                                                                    En
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-lg-3" style="text-align: center;">
+                                                        <div class   ="mb-3">
+                                                            <label for="progresspill-firstname-input">Fecha de cumpleaños:*</label>
+                                                            <input type="date" class="form-control required"
+                                                                id="progresspill-firstname-input" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4" style="text-align: center;">
+                                                        <div class="mb-3">
+                                                            <label
+                                                                for="progresspill-firstname-input">Telefono movil</label>
+                                                            <input type="tel" class="form-control required"
+                                                                id="progresspill-firstname-input" required="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-4" style="text-align: center;">
+                                                        <div class="mb-3">
+                                                            <label
+                                                                for="progresspill-firstname-input">Telefono de casa</label>
+                                                            <input type="tel" class="form-control required"
+                                                                id="progresspill-firstname-input" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4" style="text-align: center;">
+                                                        <div class="mb-3">
+                                                            <label
+                                                                for="progresspill-firstname-input">Apellido</label>
+                                                            <input type="text" class="form-control required"
+                                                                id="progresspill-firstname-input" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4" >
+                                                        <div class="mb-3">
+                                                            <label
+                                                                for="progresspill-firstname-input">Primer nombre</label>
+                                                            <input type="text" class="form-control required"
+                                                                id="progresspill-firstname-input" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4" >
+                                                        <div class="mb-3">
+                                                            <label
+                                                                for="progresspill-firstname-input">Inicio medio</label>
+                                                            <input type="number" class="form-control required"
+                                                                id="progresspill-firstname-input" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4" >
+                                                        <div class="mb-3">
+                                                            <label
+                                                                for="progresspill-firstname-input">Dirección del co-solicitante</label>
+                                                            <input type="text" class="form-control required"
+                                                                id="progresspill-firstname-input" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                    <div class="col-lg-4 col-md-6">
+                                                        <div class="mb-3">
+                                                            <label for="progresspill-firstname-input">Relacion / parentesco</label>
+                                                            <select class="form-control"
+                                                                data-trigger
+                                                                name="choices-single-default"
+                                                                id="choices-single-default"
+                                                                placeholder="This is a search
+                                                                placeholder">
+                                                                <option value=""></option>
+                                                                <option value="Choice 1">Amigos</option>
+                                                                <option value="Choice 2">Pareja</option>
+                                                                <option value="Choice 3">Hermanos</option>
+                                                                <option value="Choice 3">Capellan</option>
+                                                                <option value="Choice 3">Tio</option>
+                                                                <option value="Choice 1">Tia</option>
+                                                                                                                          
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div> 
+                                                 <!-- FIN DEL ROW  -->
+
+
+                                             
+                                                
+                                            </div>
+
+
+
+
+                                    </div>
+
+                                    <ul class="pager wizard
+                                twitter-bs-wizard-pager-link">
+                                        <li class="previous"><a href="javascript:
+                                        void(0);" class="btn
+                                        btn-primary" onclick="nextTab()"><i class="bx
+                                            bx-chevron-left
+                                            me-1"></i> Regresar</a></li>
+                                        <li class="next"><a href="javascript:
+                                        void(0);" class="btn
+                                        btn-primary" onclick="nextTab()">Siguiente
+                                                <i class="bx
+                                            bx-chevron-right
+                                            ms-1"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- //TODO:=================== CO - SOLICITANTE ============== -->
+
+
+
+                                            <div class="tab-pane" id="progress-bank-detail">
+
+                                                <div class="text-center mb-4">
+                                                    <h5>Bank Details</h5>
+                                                    <p class="card-title-desc">Fill
+                                                        all information below</p>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label for="progresspill-namecard-input"
+                                                                class="form-label">Name
+                                                                on Card</label>
+                                                            <input type="text" class="form-control"
+                                                                id="progresspill-namecard-input">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Credit
+                                                                Card Type</label>
+                                                            <select class="form-select">
+                                                                <option selected>Select
+                                                                    Card Type</option>
+                                                                <option value="AE">American
+                                                                    Express</option>
+                                                                <option value="VI">Visa</option>
+                                                                <option value="MC">MasterCard</option>
+                                                                <option value="DI">Discover</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label for="progresspill-cardno-input"
+                                                                class="form-label">Credit
+                                                                Card Number</label>
+                                                            <input type="text" class="form-control"
+                                                                id="progresspill-cardno-input">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label for="progresspill-card-verification-input"
+                                                                class="form-label">Card
+                                                                Verification
+                                                                Number</label>
+                                                            <input type="text" class="form-control"
+                                                                id="progresspill-card-verification-input">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <label for="progresspill-expiration-input"
+                                                                class="form-label">Expiration
+                                                                Date</label>
+                                                            <input type="text" class="form-control"
+                                                                id="progresspill-expiration-input">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <input type="type" class="btn btn-primary" value="Enviar">
+
+                                                </form>
+                                                <ul class="pager wizard
+                                                twitter-bs-wizard-pager-link">
+                                                    <li class="previous"><a href="javascript:
+                                                        void(0);" class="btn
+                                                        btn-primary" onclick="nextTab()"><i class="bx
+                                                            bx-chevron-left
+                                                            me-1"></i> Previous
+                                                        </a></li>
+                                                    <li class="float-end"><a href="javascript:
+                                                        void(0);" class="btn
+                                                        btn-primary" data-bs-toggle="modal"
+                                                            data-bs-target=".confirmModal">Save
+                                                            Changes</a></li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- end card body -->
                             </div>
-                            <!-- end card -->
+                            <!-- end card body -->
                         </div>
-                        <!-- end col -->
+                        <!-- end card -->
                     </div>
-                    <!-- end row -->
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
 
-                    <!-- Modal -->
-                    <div class="modal fade confirmModal" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header border-bottom-0">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="text-center">
-                                        <div class="mb-3">
-                                            <i class="bx bx-check-circle display-4
+                <!-- Modal -->
+                <div class="modal fade confirmModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header border-bottom-0">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="text-center">
+                                    <div class="mb-3">
+                                        <i class="bx bx-check-circle display-4
                                         text-success"></i>
-                                        </div>
-                                        <h5>Confirm Save Changes</h5>
                                     </div>
+                                    <h5>Confirm Save Changes</h5>
                                 </div>
-                                <div class="modal-footer justify-content-center">
-                                    <button type="button" class="btn btn-light w-md"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="type" class="btn btn-primary w-md" data-bs-dismiss="modal"
-                                        onclick="nextTab()">Save changes</button>
-                                </div>
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                                <button type="button" class="btn btn-light w-md" data-bs-dismiss="modal">Close</button>
+                                <button type="type" class="btn btn-primary w-md" data-bs-dismiss="modal"
+                                    onclick="nextTab()">Save changes</button>
                             </div>
                         </div>
                     </div>
+                </div>
 
 
-                    
 
 
+
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        3C Sigma Water System ® 2022
+                        <script>document.write(new Date().getFullYear())</script>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end d-none d-sm-block">
+                            Design & Develop by <a href="#!" class="text-decoration-underline">Themesbrand</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            3C Sigma Water System ® 2022
-                            <script>document.write(new Date().getFullYear())</script> 
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="text-sm-end d-none d-sm-block">
-                                Design & Develop by <a href="#!" class="text-decoration-underline">Themesbrand</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </div>
+        </footer>
+    </div>
     </div>
 
 
-     <!-- Right Sidebar -->
-     <div class="right-bar">
+    <!-- Right Sidebar -->
+    <div class="right-bar">
         <div data-simplebar class="h-100">
             <div class="rightbar-title d-flex align-items-center bg-dark p-3">
 
@@ -719,6 +1240,21 @@
     <script src="./cssdash/js/app.js"></script>
 
 
-</body>
+    
+  
+                  <!-- choices js -->
+                  <script
+                      src="./cssdash/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+                  <!-- color picker js -->
+                  <script src="./cssdash/libs/@simonwep/pickr/pickr.min.js"></script>
+                  <script
+                      src="./cssdash/libs/@simonwep/pickr/pickr.es5.min.js"></script>
+                  <!-- datepicker js -->
+                  <script src="./cssdash/libs/flatpickr/flatpickr.min.js"></script>
+                  <!-- init js -->
+                  <script src="./cssdash/js/pages/form-advanced.init.js"></script>
+                  
+  
+    </body>
 
 </html>
