@@ -126,11 +126,7 @@ exports.login = async (req, res) => {
                 } else {
                     //inicio de sesión OK
                     const id = results[0].id
-                    const token = jwt.sign({
-                        id: id
-                    }, process.env.JWT_SECRETO, {
-                        expiresIn: process.env.JWT_TIEMPO_EXPIRA
-                    })
+                    const token = jwt.sign({id: id}, process.env.JWT_SECRETO, {expiresIn: process.env.JWT_TIEMPO_EXPIRA})
                     //generamos el token SIN fecha de expiracion
                     //const token = jwt.sign({id: id}, process.env.JWT_SECRETO)
                     console.log("TOKEN: " + token + " para el USUARIO : " + correo)
@@ -158,6 +154,7 @@ exports.login = async (req, res) => {
 }
 
 //TODO: AUTENTICACION
+
 exports.isAuthenticated = async (req, res, next) => {
     if (req.cookies.jwt) {
         try {
@@ -183,3 +180,28 @@ exports.logout = (req, res) => {
     return res.redirect('/dashboard')
 }
 
+
+//TODO: VALIDACION CUNADO YA INICIA SESION
+
+
+exports.nologueado = async (req, res, next) => {
+    if (!req.cookies.jwt) {
+        return next()
+        // try {
+        //     const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
+        //     conexion.query('SELECT * FROM tblformulario_registro WHERE id = ?', [decodificada.id], (error, results) => {
+        //         if (!results) {
+        //             return next()
+        //         }
+        //         req.correo = results[0]
+        //         return next()
+        //     })
+        // } catch (error) {
+        //     console.log(error)
+        //     return next()
+        // }
+    } else {
+
+        res.redirect('/dashboard')
+    }
+}
